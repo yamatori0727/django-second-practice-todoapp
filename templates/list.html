@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="p-5 text-left bg-light">
+    <h1 class="mb-3">Todo-List</h1>
+    <p class="mb-3">TodoListを作成して生産的な毎日を過ごしましょう</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <a class="btn btn-secondary mb-4" href="{% url 'create' %}" role="button">新規作成</a>
+
+    <!-- object_listはviewsで指定したmodelの全てのデータ -->
+    {% for post in object_list %}
+    <div class="alert alert-{{post.priority}}" role="alert">
+        <p>{{post.title}}　期日:{{post.duedate}}</p><!--pタグで囲むとインライン要素になり、次のものが改行される-->
+        <a class="btn btn-primary" href="{% url 'detail' post.pk %}" role="button">詳細画面</a>
+        <a class="btn btn-success" href="{% url 'update' post.pk %}" role="button">編集画面</a>
+        <a class="btn btn btn-warning" href="{% url 'delete' post.pk %}" role="button">削除画面</a>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block header %}
+<div class="p-5 text-left bg-light">
+    <h1 class="mb-3">Todo-Detail</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+
+    <div class="alert alert-success" role="alert">
+        <h5>{{ object.memo }}</h5>
+    </div>
+</div>
+{% endblock %}
